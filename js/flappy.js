@@ -1,17 +1,16 @@
+var app = new PIXI.Application(800, 600, {
+  backgroundColor: 0x000000
+});
+
+document.body.appendChild(app.view);
+
 PIXI.loader
   .add("assets/stars.png")
   .load(setup)
 
 function setup() {
-  // Renderer létrehozása
-  var renderer = PIXI.autoDetectRenderer();
-
-  // Renderer nézet hozzáadása a body-hoz
-  document.body.appendChild(renderer.view);
-
-  // Színtér létrehozása az elemeknek
-  var stage = new PIXI.Container();
-
-  // Stage kirajzolása a rendererre
-  renderer.render(stage);
+  var stars = new PIXI.Sprite(
+    PIXI.loader.resources["assets/stars.png"].texture
+  );
+  app.stage.addChild(stars);
 }
