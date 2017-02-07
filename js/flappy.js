@@ -80,10 +80,22 @@ function setup() {
   var birdx = 100;
   var birdy = 100;
 
+  // bird sprite vertical speed (falling and jumping)
+  var yspeed = 0;
+
+  // pressing cursor up sets y speed to -1
+  var upKey = keyboard(38);
+  upKey.press = function() {
+    yspeed = -10;
+  };
+
   app.ticker.add(function() {
     stars.tilePosition.x -= 0.1;
     hills1.tilePosition.x -= 0.3;
     hills2.tilePosition.x -= 1;
+
+    birdy += yspeed;
+    yspeed += 0.5;
 
     bird.x = birdx;
     bird.y = birdy;
