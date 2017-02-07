@@ -132,10 +132,14 @@ function setup() {
       rocks.push(rock);
     }
 
-    for (var i = 0; i < rocks.length; i++) {
+    for (var i = rocks.length-1; i >= 0; i--) {
       var rock = rocks[i];
       rock.x -= 3;
       rock.rotation -= 0.1;
+      if (rock.x + rocktexture.width < 0) {
+        app.stage.removeChild(rock);
+        rocks.splice(i, 1);
+      }
     }
   })
 }
