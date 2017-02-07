@@ -13,4 +13,8 @@ function setup() {
     PIXI.loader.resources["assets/stars.png"].texture
   );
   app.stage.addChild(stars);
+
+  app.ticker.add(function() {
+    stars.x -= 1;
+  })
 }
