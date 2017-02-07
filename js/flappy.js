@@ -103,6 +103,11 @@ function setup() {
       birdy = border;
     } else if (app.renderer.height - border < birdy) {
       birdy = app.renderer.height - border;
+      if (yspeed > 5) {
+        yspeed = -yspeed * 0.5;
+      } else {
+        yspeed = 0;
+      }
     }
 
     bird.x = birdx;
