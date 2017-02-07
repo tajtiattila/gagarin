@@ -1,11 +1,17 @@
-// Renderer létrehozása
-var renderer = PIXI.autoDetectRenderer();
+PIXI.loader
+  .add("assets/stars.png")
+  .load(setup)
 
-// Renderer nézet hozzáadása a body-hoz
-document.body.appendChild(renderer.view);
+function setup() {
+  // Renderer létrehozása
+  var renderer = PIXI.autoDetectRenderer();
 
-// Színtér létrehozása az elemeknek
-var stage = new PIXI.Container();
+  // Renderer nézet hozzáadása a body-hoz
+  document.body.appendChild(renderer.view);
 
-// Stage kirajzolása a rendererre
-renderer.render(stage);
+  // Színtér létrehozása az elemeknek
+  var stage = new PIXI.Container();
+
+  // Stage kirajzolása a rendererre
+  renderer.render(stage);
+}
