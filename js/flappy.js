@@ -8,6 +8,7 @@ PIXI.loader
   .add("assets/stars.png")
   .add("assets/hills1.png")
   .add("assets/hills2.png")
+  .add("assets/sprites.json")
   .load(setup)
 
 function setup() {
@@ -31,6 +32,10 @@ function setup() {
     app.renderer.height
   );
   app.stage.addChild(hills2);
+
+  // bird sprite
+  var bird = new PIXI.Sprite(PIXI.Texture.fromFrame("bird1.png"));
+  app.stage.addChild(bird);
 
   app.ticker.add(function() {
     stars.tilePosition.x -= 0.1;
