@@ -72,7 +72,9 @@ function setup() {
   app.stage.addChild(hills2);
 
   // bird sprite
-  var bird = new PIXI.Sprite(PIXI.Texture.fromFrame("bird1.png"));
+  var bird1 = PIXI.Texture.fromFrame("bird1.png");
+  var bird2 = PIXI.Texture.fromFrame("bird2.png");
+  var bird = new PIXI.Sprite(bird1);
   bird.anchor.set(0.5);
   app.stage.addChild(bird);
 
@@ -105,5 +107,10 @@ function setup() {
 
     bird.x = birdx;
     bird.y = birdy;
+    if (yspeed < -3) {
+      bird.texture = bird2;
+    } else {
+      bird.texture = bird1;
+    }
   })
 }
