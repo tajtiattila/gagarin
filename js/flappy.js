@@ -7,6 +7,7 @@ document.body.appendChild(app.view);
 PIXI.loader
   .add("assets/stars.png")
   .add("assets/hills1.png")
+  .add("assets/hills2.png")
   .load(setup)
 
 function setup() {
@@ -24,8 +25,16 @@ function setup() {
   );
   app.stage.addChild(hills1);
 
+  var hills2 = new PIXI.extras.TilingSprite(
+    PIXI.loader.resources["assets/hills2.png"].texture,
+    app.renderer.width,
+    app.renderer.height
+  );
+  app.stage.addChild(hills2);
+
   app.ticker.add(function() {
     stars.tilePosition.x -= 0.1;
     hills1.tilePosition.x -= 0.3;
+    hills2.tilePosition.x -= 1;
   })
 }
