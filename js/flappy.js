@@ -132,6 +132,7 @@ function setup() {
       rocks.push(rock);
     }
 
+    var maxdelta = 40;
     for (var i = rocks.length-1; i >= 0; i--) {
       var rock = rocks[i];
       rock.x -= 3;
@@ -139,6 +140,11 @@ function setup() {
       if (rock.x + rocktexture.width < 0) {
         app.stage.removeChild(rock);
         rocks.splice(i, 1);
+      }
+      var dx = bird.x - rock.x;
+      var dy = bird.y - rock.y;
+      if (Math.sqrt(dx * dx + dy * dy) < maxdelta) {
+        app.stage.removeChild(bird);
       }
     }
   })
