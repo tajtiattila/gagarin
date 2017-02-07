@@ -9,12 +9,14 @@ PIXI.loader
   .load(setup)
 
 function setup() {
-  var stars = new PIXI.Sprite(
-    PIXI.loader.resources["assets/stars.png"].texture
+  var stars = new PIXI.extras.TilingSprite(
+    PIXI.loader.resources["assets/stars.png"].texture,
+    app.renderer.width,
+    app.renderer.height
   );
   app.stage.addChild(stars);
 
   app.ticker.add(function() {
-    stars.x -= 1;
+    stars.tilePosition.x -= 1;
   })
 }
