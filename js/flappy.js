@@ -91,6 +91,10 @@ function setup() {
     yspeed = -10;
   };
 
+  // rocks
+  var rocks = [];
+  var rocktexture = PIXI.Texture.fromFrame("rock.png");
+
   app.ticker.add(function() {
     stars.tilePosition.x -= 0.1;
     hills1.tilePosition.x -= 0.3;
@@ -116,6 +120,22 @@ function setup() {
       bird.texture = bird2;
     } else {
       bird.texture = bird1;
+    }
+
+    var rockchance = 0.01; // 1%
+    if (Math.random() < rockchance) {
+      var rock = new PIXI.Sprite(rocktexture);
+      rock.anchor.set(0.5);
+      rock.x = app.renderer.width + rocktexture.width;
+      rock.y = Math.random() * app.renderer.height;
+      app.stage.addChild(rock);
+      rocks.push(rock);
+    }
+
+    for (var i = 0; i < rocks.length; i++) {
+      var rock = rocks[i];
+      rock.x -= 3;
+      rock.rotation -= 0.1;
     }
   })
 }
