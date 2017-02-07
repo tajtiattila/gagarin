@@ -35,11 +35,19 @@ function setup() {
 
   // bird sprite
   var bird = new PIXI.Sprite(PIXI.Texture.fromFrame("bird1.png"));
+  bird.anchor.set(0.5);
   app.stage.addChild(bird);
+
+  // bird sprite position
+  var birdx = 100;
+  var birdy = 100;
 
   app.ticker.add(function() {
     stars.tilePosition.x -= 0.1;
     hills1.tilePosition.x -= 0.3;
     hills2.tilePosition.x -= 1;
+
+    bird.x = birdx;
+    bird.y = birdy;
   })
 }
