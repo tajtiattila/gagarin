@@ -96,6 +96,12 @@ function setup() {
 
     birdy += yspeed;
     yspeed += 0.5;
+    var border = 40;
+    if (birdy < border) {
+      birdy = border;
+    } else if (app.renderer.height - border < birdy) {
+      birdy = app.renderer.height - border;
+    }
 
     bird.x = birdx;
     bird.y = birdy;
